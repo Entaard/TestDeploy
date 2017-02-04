@@ -19,9 +19,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.listen(port);
+app.use(express.static(__dirname + '/../public'));
 app.get('/*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 });
-app.use(express.static(__dirname + '/../public'));
 
 console.log(`Listening at http://localhost:${port}`)

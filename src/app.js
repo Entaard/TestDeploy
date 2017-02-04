@@ -15,10 +15,10 @@ if (process.env.NODE_ENV !== 'production') {
 		noInfo: true,
 		publicPath: config.output.publicPath
 	}))
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+	})
 }
-app.get('*', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '..', 'index.html'))
-})
 
 app.listen(port);
 

@@ -27,17 +27,19 @@ module.exports = {
 	],
 	module: {
 		loaders: [
-			{
-				exclude: /node_modules/,
+			{ test: /\.js?$/,
 				loader: 'babel',
-				query: {
-					presets: ['react', 'es2015', 'stage-1']
-				}
+				exclude: /node_modules/
 			},
-			{
-				test: /\.scss?$/,
+			{ test: /\.scss?$/,
 				loader: 'style!css!sass',
-				include: path.join(__dirname, 'styles')
+				include: path.join(__dirname, 'src', 'styles')
+			},
+			{ test: /\.png$/,
+				loader: 'file'
+			},
+			{ test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+				loader: 'file'
 			}
 		]
 	},

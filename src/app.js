@@ -2,7 +2,6 @@ const Server = require('./server.js');
 const port = (process.env.PORT || 8080);
 const app = Server.app();
 const path = require('path');
-express = require('express');
 
 if (process.env.NODE_ENV !== 'production') {
 	const webpack = require('webpack')
@@ -16,12 +15,11 @@ if (process.env.NODE_ENV !== 'production') {
 		noInfo: true,
 		publicPath: config.output.publicPath
 	}))
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '..', 'index.html'));
+	});
 }
 
 app.listen(port);
-app.use(express.static(__dirname + '/../public'));
-app.get('/users', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '..', 'index.html'));
-});
 
 console.log(`Listening at http://localhost:${port}`)

@@ -24,18 +24,29 @@ module.exports = {
 		loaders: [
 			{ test: /\.js?$/,
 				loader: 'babel',
-				exclude: path.join(__dirname, 'node_modules') },
+				exclude: path.join(__dirname, 'node_modules'),
+				include: path.join(__dirname, 'src')
+			},
 			{ test: /\.scss?$/,
-				loader: 'styles!css!sass',
-				include: path.join(__dirname, 'src', 'styles') },
+				loader: 'style!css!sass',
+				include: path.join(__dirname, 'src', 'styles')
+			},
 			{ test: /\.png$/,
-				loader: 'file' },
+				loader: 'file'
+			},
 			{ test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-				loader: 'file'}
+				loader: 'file'
+			}
 		]
 	},
 	devServer: {
 		historyApiFallback: true,
 		contentBase: './'
+	},
+	resolve: {
+		extensions: ['', '.js', '.jsx', '.css'],
+		modulesDirectories: [
+			'node_modules'
+		]
 	}
 }

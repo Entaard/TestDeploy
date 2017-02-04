@@ -1,7 +1,7 @@
-const Server = require('./server.js');
-const port = (process.env.PORT || 8080);
-const app = Server.app();
-const path = require('path');
+const Server = require('./server.js')
+const port = (process.env.PORT || 8080)
+const app = Server.app()
+const path = require('path')
 
 if (process.env.NODE_ENV !== 'production') {
 	const webpack = require('webpack')
@@ -16,8 +16,8 @@ if (process.env.NODE_ENV !== 'production') {
 		publicPath: config.output.publicPath
 	}))
 	app.get('*', (req, res) => {
-		res.sendFile(path.resolve(__dirname, '..', 'index.html'));
-	});
+		res.sendFile(path.resolve(__dirname, '..', 'index.html'))
+	})
 }
 
 app.listen(port);

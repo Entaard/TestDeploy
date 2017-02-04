@@ -5,7 +5,7 @@ module.exports = {
 	devtool: 'source-map',
 
 	entry: [
-		'./src/index.js'
+		'./src/index'
 	],
 
 	output: {
@@ -34,12 +34,13 @@ module.exports = {
 			{ test: /\.js?$/,
 				loader: 'babel',
 				exclude: /node_modules/,
+				include: path.join(__dirname, 'src'),
 				query: {
 					presets: ['react', 'es2015', 'stage-0']
 				}
 			},
 			{ test: /\.scss?$/,
-				loader: 'styles!css!sass',
+				loader: 'style!css!sass',
 				include: path.join(__dirname, 'src', 'styles')
 			},
 			{ test: /\.png$/,
@@ -51,6 +52,9 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['', '.js', '.jsx', '.css'],
+		modulesDirectories: [
+			'node_modules'
+		]
 	}
 }

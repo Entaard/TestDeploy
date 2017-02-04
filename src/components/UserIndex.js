@@ -5,6 +5,7 @@ import UserList from '../containers/UserList';
 export default function () {
 	return (
 		<div>
+			Hello it's user index page!
 			<SearchBar />
 			<UserList />
 		</div>

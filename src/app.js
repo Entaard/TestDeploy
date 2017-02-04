@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.listen(port);
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + '../public'));
 app.get('/users', (req, res) => {
 	res.sendFile(path.resolve(__dirname, '..', 'index.html'));
 });
